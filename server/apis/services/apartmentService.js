@@ -4,4 +4,11 @@ const getAllApartment = async () => {
     return await apartmentController.getAllApartment();
 };
 
-module.exports = { getAllApartment };
+const getApartmentByRating = async (rating) => {
+    return await apartmentController.getApartmentByRating(rating);
+};
+const getApartmentById = async (id) => {
+    return await apartmentController.getApartmentById(id);
+};
+
+module.exports = { getAllApartment, getApartmentByRating,getApartmentById };

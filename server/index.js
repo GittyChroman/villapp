@@ -15,9 +15,9 @@ const port = config.port;
 connectDB();
 
 
-app.use("/apis", apartmentRouter);
-app.use("/apis", restaurantRouter);
-app.use("/apis", attractionRouter);
+app.use("/api/apartments", apartmentRouter);
+app.use("/api/restaurants", restaurantRouter);
+app.use("/api/attractions", attractionRouter);
 
 
 app.listen(port, () => {

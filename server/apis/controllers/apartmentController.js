@@ -1,10 +1,11 @@
-const { default: mongoose } = require("mongoose")
-const Apartment = require("../../models/apartmentModel")
+
+const Apartament = require("../../models/apartmentModel")
+
 
 const getAllApartment = async () => {
-
     try {
-        const apartment = await Apartment.find();
+      
+        const apartment = await Apartament.find();
         return apartment
 
     } catch (error) {
@@ -14,4 +15,21 @@ const getAllApartment = async () => {
     }
 };
 
-module.exports = { getAllApartment };
+const getAllSearchResults = async () => {
+    try {
+        const apartment = await Apartament.find({
+            $or: [
+                { title: regex },
+                { description: regex }
+            ]
+        });
+        return apartment;
+
+    } catch (error) {
+        console.error("Error fetching apartments:", error);
+        throw error;
+
+    }
+}; 
+
+module.exports = { getAllApartment,getAllSearchResults};

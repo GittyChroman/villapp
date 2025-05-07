@@ -7,7 +7,6 @@ const attractionRouter=require("./apis/routes/attractionRoute")
 const yaml = require("js-yaml");
 const fs = require("fs");
 const connectDB = require("./common/db")
-const cors = require('cors');
 
 const config = yaml.load(fs.readFileSync('./config/config.yaml', 'utf8'));
 
@@ -20,6 +19,7 @@ app.use(express.json());
 app.use("/api/apartments", apartmentRouter);
 app.use("/api/restaurants", restaurantRouter);
 app.use("/api/attractions", attractionRouter);
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

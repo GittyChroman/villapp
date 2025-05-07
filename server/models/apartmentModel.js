@@ -27,7 +27,8 @@ const apartmentSchema = new mongoose.Schema({
             shabbat: { type: Number },
             week: { type: Number }
         }
-    }
+    },
+    rating: { type: Number }
 }, { timestamps: true });
 
 const Apartment = mongoose.model("Apartment", apartmentSchema,"apartments");

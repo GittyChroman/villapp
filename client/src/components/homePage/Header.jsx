@@ -11,10 +11,14 @@ const Header = () => {
     const handleSearch = async (e) => {
         const searchQuery = e.target.value;
         setQuery(searchQuery);
-        setFilteredResults(searchQuery);
-        getAllResultsApartment(searchQuery);
-        getAllResultsAttraction(searchQuery);
-        getAllResultsRestaurant(searchQuery);
+    
+        const results1 = await getAllResultsApartment(searchQuery);
+        const results2 = await getAllResultsAttraction(searchQuery);
+        const results3 = await getAllResultsRestaurant(searchQuery);
+    
+        const mergedResults = [...results1, ...results2, ...results3];
+    
+        setFilteredResults(mergedResults);
     };
 
     const handleSearchClick = () => {

@@ -5,8 +5,6 @@ import { getAllApartment, getAllAttraction, getAllRestaurant } from "../../servi
 import './Categorys.css';
 
 
-
-
 const getApartments = () => {
     getAllApartment();
 }

@@ -1,10 +1,10 @@
 
-const Apartament = require("../../models/apartmentModel")
+const Apartment = require("../../models/apartmentModel")
 
 
 const getAllApartment = async () => {
     try {
-      
+
         const apartment = await Apartament.find();
         return apartment
 
@@ -17,7 +17,7 @@ const getAllApartment = async () => {
 
 const getAllSearchResults = async () => {
     try {
-        const apartment = await Apartament.find({
+        const apartment = await Apartment.find({
             $or: [
                 { title: regex },
                 { description: regex }
@@ -30,6 +30,6 @@ const getAllSearchResults = async () => {
         throw error;
 
     }
-}; 
+};
 
-module.exports = { getAllApartment,getAllSearchResults};
+module.exports = { getAllApartment, getAllSearchResults };

@@ -1,0 +1,38 @@
+.iconBar {
+    display: flex;
+    gap: 20px; /* רווחים בין האייקונים */
+    justify-content: center; /* מרכז את הסרגל */
+    margin-top: 5px;
+    direction: rtl;
+    color:hwb(228 25% 9%);
+    padding: 20px;
+    border: 3px solid hwb(228 25% 9%);;
+    border-radius: 5Px;
+    background-color: #cad2d800;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .iconItem {
+    width: 4cm;
+    height: 4cm;
+    font-size: 4cm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    flex-direction: column; 
+    align-items: center;     
+    font-size: 64px;  
+  }
+  .icon-text {
+    margin-top: 8px;
+    font-size: 18px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #444;
+  }

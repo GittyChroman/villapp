@@ -12,5 +12,22 @@ const getAllAttraction = async () => {
 
     }
 };
+const getAllSearchResults = async () => {
+    try {
+        const attraction = await Attraction.find({
+            $or: [
+                { title: regex },
+                { description: regex }
+            ]
+        });
+        return attraction;
 
-module.exports = { getAllAttraction };
+    } catch (error) {
+        console.error("Error fetching attraction:", error);
+        throw error;
+
+    }
+}; 
+
+
+module.exports = { getAllAttraction,getAllSearchResults};

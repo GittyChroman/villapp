@@ -14,7 +14,8 @@ const port = config.port;
 
 connectDB();
 
-
+app.use(cors());
+app.use(express.json());
 app.use("/api/apartments", apartmentRouter);
 app.use("/api/restaurants", restaurantRouter);
 app.use("/api/attractions", attractionRouter);

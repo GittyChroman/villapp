@@ -12,5 +12,17 @@ router.get("/", async (req, res) => {
     }
 
 });
+router.get("/", async (req, res) => {
+    try {
+        const search = req.query.search;
+        if (search) {
+            const restaurant = await restaurantService.getAllResultsRestaurant(search);
+            return res.status(200).json(restaurant);
+        } 
+    } catch (error) {
+        console.error("Error fetching restauarants:", error);
+        res.status(500).json({ message: "Failed to fetch restauarants" });
+    }
+});
 
 module.exports = router; 

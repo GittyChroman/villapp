@@ -13,17 +13,20 @@ router.get("/", async (req, res) => {
 
 });
 
-router.get("/", async (req, res) => {
+router.get("/search/:search", async (req, res) => {
+    
     try {
-        const search = req.query.search;
-        if (search) {
-            const attraction = await attractionService.getAllResultsAttraction(search);
-            return res.status(200).json(attraction);
-        } 
+        const search = req.params.search||'';
+        if(search){
+        const attractions = await attractionService.getAllSearchAttraction(search);
+         return res.status(200).json(attractions);
+        }
     } catch (error) {
         console.error("Error fetching attractions:", error);
         res.status(500).json({ message: "Failed to fetch attractions" });
     }
 });
+
+
 
 module.exports = router; 

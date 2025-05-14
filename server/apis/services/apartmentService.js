@@ -13,9 +13,9 @@ const getApartmentById = async (id) => {
     return await apartmentController.getApartmentById(id);
 };
 
-const getAllResultsApartment = async (results) => {
-    return await apartmentController.getAllSearchResults(results)
+const getAllSearchApartment = async (search) => {
+    return await apartmentController.getAllSearchApartment(search)
 }
 
 
-module.exports = { getAllApartment, getApartmentByRating, getApartmentById, getAllResultsApartment };
+module.exports = { getAllApartment, getApartmentByRating, getApartmentById, getAllSearchApartment };

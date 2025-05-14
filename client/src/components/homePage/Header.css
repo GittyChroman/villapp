@@ -55,7 +55,6 @@
   transform: scale(1.1);
 }
 
-/* עיצוב חלונית המודל */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -86,7 +85,7 @@
 }
 
 .modal-content input {
-  width: 100%;
+  width: 60%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -95,7 +94,7 @@
 
 .modal-content button {
 
-  color: #fff;
+  color: #ffffff00;
   padding: 10px 20px;
   border: none;
   cursor: pointer;

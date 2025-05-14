@@ -3,10 +3,10 @@ const attractionController = require("../controllers/attractionController");
 const getAllAttraction = async () => {
     return await attractionController.getAllAttraction();
 };
-const getAllResultsAttraction = async (results) => {
-    return await attractionController.getAllAttraction(results);
+const getAllSearchAttraction = async (search) => {
+    return await attractionController.getAllSearchAttraction(search);
 
 }
 
 
-module.exports = { getAllAttraction, getAllResultsAttraction };
+module.exports = { getAllAttraction, getAllSearchAttraction }

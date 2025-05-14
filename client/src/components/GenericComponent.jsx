@@ -1,53 +1,60 @@
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import './GenericComponent.css';
+import { PiMapPinAreaFill } from "react-icons/pi";
+import { useEffect, useState } from "react";
+import { getUserById } from "../services/admin";
+import { IoBed } from "react-icons/io5";
+import { MdMeetingRoom } from "react-icons/md";
+
 
 const GenericComponent = ({ resultData, type }) => {
-
-    const navigate = useNavigate();
-
-    const handleMoreInfo = () => {
-        const encodedName = encodeURIComponent(resultData.name);
-        navigate(`/${type}${"s"}/${encodedName}`, { state: { resultData } });
-    };
+    const [phoneNumber, setPhoneNumber] = useState();
 
 
+    useEffect(() => {
+
+
+        const fetchData = async () => {
+            const user = await getUserById(resultData.user_id);
+            console.log("user", user.Object);
+            setPhoneNumber(user.phone)
+        }
+
+        if (resultData?.user_id) {
+            fetchData();
+        }
+
+    }, [resultData?.user_id]);
 
 
     return (
-        <div style={{ direction: "rtl" }}>
+        <div className="viewGeneric" >
+            <div className="genericImg">
+                {resultData.pictures[0]}
+            </div>
 
-
-            <div className="viewGeneric">
-                {resultData.pictures?.map((img, idx) => (
-                    <img key={idx} src={img} alt={`image - ${idx}`} />
-                ))}
-
+            <div className="genericDetails">
                 <h2>{resultData.name}</h2>
-                {type == "apartment" ?(<p>{resultData.descriptions?.description}</p>) : (<p>{resultData.descriptions}</p>)}
+                {type == "apartment" ? (<p>{resultData.descriptions?.description}</p>) : (<p>{resultData.descriptions}</p>)}
 
-                <ul className="ulStyle">
-                    <li>{resultData.area}</li>
-                    {type == "apartment" && <li>{resultData.bads}</li>}
-                    {type == "apartment" && <li>{Number(resultData.rooms.coupleRooms) + Number(resultData.rooms.otherRooms)}</li>}
+                <ul>
+                    <li> <PiMapPinAreaFill />{resultData.area}</li>
+                    {type == "apartment" && <li><IoBed />{resultData.beds}</li>}
+                    {type == "apartment" &&
+                        <li> <MdMeetingRoom />
+                            {Number(resultData.rooms.coupleRooms) + Number(resultData.rooms.otherRooms)}
+                        </li>}
                 </ul>
 
                 {type == "apartment" && <div>{resultData.descriptions?.price}</div>}
-                {/* {type == "apartment" && <div>{resultData.phoneNumber || "לא נמצא טלפון"}</div>} */}
+                {type == "apartment" && <div className="phoneGeneric">{phoneNumber}</div>}
 
-                <button onClick={handleMoreInfo}>
+                <button className="genericButton">
                     מידע נוסף <FaLongArrowAltLeft />
                 </button>
             </div>
-
-
-        </div >
+        </div>
     );
 };
 
 export default GenericComponent;
-
-
-
-
-
-

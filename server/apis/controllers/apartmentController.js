@@ -1,10 +1,11 @@
 
 const Apartment = require("../../models/apartmentModel")
 
+
 const getAllApartment = async () => {
     try {
 
-        const apartment = await Apartament.find();
+        const apartment = await Apartment.find()
         return apartment
 
     } catch (error) {
@@ -26,15 +27,17 @@ const getApartmentByRating = async (Rating) => {
     }
 };
 
-const getAllSearchResults = async () => {
+const getAllSearchApartment = async (search) => {
     try {
-        const apartment = await Apartament.find({
+        const regex = new RegExp(search, "i")
+        const apartments = await Apartment.find({
             $or: [
-                { title: regex },
-                { description: regex }
+                { name: regex },
+                { "address.city": regex },
+                { area: regex }
             ]
         });
-        return apartment;
+        return apartments;
     } catch (error) {
         console.error("Error fetching apartments:", error);
         throw error;
@@ -44,7 +47,7 @@ const getAllSearchResults = async () => {
 
 const getApartmentById = async (id) => {
     try {
-        const apartment = await Apartment.findById(id);
+        const apartment = await Apartment.findById(id)
         return apartment
 
     } catch (error) {
@@ -54,5 +57,6 @@ const getApartmentById = async (id) => {
     }
 };
 
-module.exports = { getAllApartment, getApartmentByRating, getApartmentById,getAllSearchResults };
+
+module.exports = { getAllApartment, getApartmentByRating, getApartmentById, getAllSearchApartment };
 

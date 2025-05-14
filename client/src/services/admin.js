@@ -5,8 +5,6 @@ const axiosInstanceAttraction = createAxiosInstance("/attractions");
 const axiosInstanceRestaurant = createAxiosInstance("/restaurants");
 
 
-
-
 export const getAllApartment = async () => {
 
     try {
@@ -17,6 +15,7 @@ export const getAllApartment = async () => {
         return [];
     }
 };
+
 export const getAllAttraction = async () => {
 
     try {
@@ -27,6 +26,7 @@ export const getAllAttraction = async () => {
         return [];
     }
 };
+
 export const getAllRestaurant = async () => {
 
     try {
@@ -37,32 +37,44 @@ export const getAllRestaurant = async () => {
         return [];
     }
 };
-export const getAllResultsApartment = async (results) => {
+
+export const getAllSearchApartment = async (searchValue) => {
     try {
-        const response = await axiosInstanceApartment.get("/", {
-            params: { search: results }
-        });
+
+        const response = await axiosInstanceApartment.get(`/search/${searchValue}`)
         return response.data;
     } catch (error) {
         console.error('Error finding apartment results:', error);
         return [];
     }
 };
-export const getAllResultsAttraction = async (results) => {
+
+export const getAllSearchAttraction = async (searchValue) => {
     try {
-        const response = await axiosInstanceAttraction.get("/", {
-            params: { search: results }
-        });
+ 
+        const response = await axiosInstanceAttraction.get(`/search/${searchValue}`)
         return response.data;
     } catch (error) {
         console.error('Error finding attraction results:', error);
         return [];
     }
 };
-export const getAllResultsRestaurant = async (results) => {
+
+export const getAllSearchRestaurant = async (searchValue) => {
     try {
-        const response = await axiosInstanceRestaurant.get("/", {
-            params: { search: results }
+
+        const response = await axiosInstanceRestaurant.get(`/search/${searchValue}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error finding restaurant results:', error);
+        return [];
+    }
+};
+
+export const getApartmentByRating = async () => {
+    try {
+        const response = await axiosInstanceApartment.get(`/rating/${5}`, {
+            params: { rating: 5 }
         });
         return response.data;
     } catch (error) {

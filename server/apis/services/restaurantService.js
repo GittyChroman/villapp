@@ -3,9 +3,9 @@ const restaurantController = require("../controllers/restaurantController");
 const getAllRestaurant = async () => {
     return await restaurantController.getAllRestaurant();
 };
-const getAllResultsRestaurant = async (results) => {
+const getAllSearchRestaurant = async (search) => {
 
-    return await restaurantController.getAllRestaurant(results);
+    return await restaurantController.getAllSearchRestaurant(search);
 
 };
-module.exports = { getAllRestaurant, getAllResultsRestaurant };
+module.exports = { getAllRestaurant, getAllSearchRestaurant };

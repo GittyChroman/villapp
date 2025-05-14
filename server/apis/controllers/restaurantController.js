@@ -12,22 +12,23 @@ const getAllRestaurant = async () => {
 
     }
 };
-const getAllSearchResults = async () => {
+const getAllSearchRestaurant = async (search) => {
     try {
-        const restaurant = await Restaurant.find({
+        const regex = new RegExp(search, "i")
+        const restaurants = await Restaurant.find({
             $or: [
-                { title: regex },
-                { description: regex }
+                { name: regex },
+                { descriptions: regex },
+                { type: regex }
             ]
         });
-        return restaurant;
-
+        return restaurants;
     } catch (error) {
         console.error("Error fetching restaurant:", error);
         throw error;
 
     }
-}; 
+};
 
 
-module.exports = { getAllRestaurant ,getAllSearchResults};
+module.exports = { getAllRestaurant ,getAllSearchRestaurant};

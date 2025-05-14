@@ -24,13 +24,17 @@ router.get("/rating/:rating", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) => {
+router.get("/search/:search", async (req, res) => {
+
     try {
-        const search = req.query.search;
+        const search = req.params.search||'';
         if (search) {
-            const apartments = await apartmentService.getAllResultsApartment(search);
+            const apartments = await apartmentService.getAllSearchApartment(search);
             return res.status(200).json(apartments);
         }
+        if (!search) {
+            return res.status(400).json({ message: "Search term is required" });
+          }          
     } catch (error) {
         console.error("Error fetching apartments:", error);
         res.status(500).json({ message: "Failed to fetch apartments" });
